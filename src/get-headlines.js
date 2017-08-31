@@ -4,9 +4,10 @@
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function(){
       if (xhr.readyState === 4){
-        responseJSON = xhr.responseText;
-        console.log(responseJSON);
-        return responseJSON
+        // responseJSON = xhr.responseText;
+        parsedjson = JSON.parse(xhr.responseText);
+        new parseHeadlines().renderHeadlines(parsedjson);
+
       }
     }
     xhr.addEventListener('error', function(){
@@ -17,8 +18,3 @@
   };
    exports.Headlines = Headlines;
  })(this);
-
-//
-// model:parsejson for Headlines
-// View:have view  to display Headlines
-// Controller: have controller for headlines
